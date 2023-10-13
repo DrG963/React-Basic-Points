@@ -4,13 +4,12 @@ import { transactions } from './generateData';
 
 export function basicPointsMath(amount) {
   let points = 0;
-  // In the problem it says *over 100 and *over 50. So I can assume the range is 50.01 - 100.00 for 1 point each and 100.01 for 2 points each dollar? 
-  // Also it says for every dollar, so I can assume we will round down decimal amounts regardless of if its closer to the next dollar? 
+  // I am assuming the customers still get the 50 points in the 100+ dollar range from the 50-100 range.
   if (amount > 100) {
-      points = Math.floor(amount) * 2;
+      points = ((Math.floor(amount) - 100) * 2) + 50;
   } 
   if (amount > 50 && amount <= 100) {
-      points = Math.floor(amount);
+      points = Math.floor(amount) - 50;
   }
   return points;
 }
